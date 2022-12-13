@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora-Aranza D.D.R</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            body{
+                background-color: navy;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "container"> 
+            <div class = "col-3">
+                <hr>
+
+                <div class="mt-1">
+                    <input type="text" id="resultado">
+                </div>
+
+                <div class = "mt-1">
+                    <button class = "btn btn-dark" onclick = "abutton(1)">1</button>
+                    <button class = "btn btn-dark" onclick = "abutton(2)">2</button>
+                    <button class = "btn btn-dark" onclick = "abutton(3)">3</button>
+                    <button class = "btn btn-secondary" onclick = "mas()">+</button>
+                    <button class = "btn btn-info" onclick = "pot()">Pot</button>
+                </div>
+
+                <div class = "mt-1">
+                    <button class = "btn btn-dark" onclick = "abutton(4)">4</button>
+                    <button class = "btn btn-dark" onclick = "abutton(5)">5</button>
+                    <button class = "btn btn-dark" onclick = "abutton(6)">6</button>
+                    <button class = "btn btn-secondary" onclick = "menos()">-</button>
+                    <button class = "btn btn-info" onclick = "rai()">Raiz2</button>
+                </div>
+
+                <div class = "mt-1">
+                    <button class = "btn btn-dark" onclick = "abutton(7)">7</button>
+                    <button class = "btn btn-dark" onclick = "abutton(8)">8</button>
+                    <button class = "btn btn-dark" onclick = "abutton(9)">9</button>
+                    <button class = "btn btn-secondary" onclick = "multi()">*</button>
+                    <button class = "btn btn-info" onclick = "se()">Sen</button>
+
+                </div>
+
+                <div class = "mt-1">
+                    <button class = "btn btn-danger" onclick = "clean()">C</button>
+                    <button class = "btn btn-dark" onclick = "abutton(0)">0</button>
+                    <button class = "btn btn-info" onclick = "igual()">=</button>
+                    <button class = "btn btn-secondary" onclick = "div()">/</button>
+                    <button class = "btn btn-info" onclick = "co()">Cos</button>
+                </div>
+
+                <div class = "mt-1">
+                    <button class = "btn btn-danger" onclick = "saludar()">HOLA</button>
+                </div>
+
+                <div class = "mt-1">
+                <button class = "btn btn-dark" onclick = "haviso()">NOTA: Debe limpiar el primer valor antes de colocar el segundo, para que el resultado sea correcto.</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+        
+        <script>
+        var num = "";
+            var val1 = "";
+            var oper = 0;
+            raizC=parseInt (1);
+
+            function igual(){
+                if(oper == 1){
+                    tmp = parseInt (val1) + parseInt(num);
+                    $("#resultado").val(tmp);
+                    num = tmp;
+                }
+                if(oper == 2){
+                    tmp = parseInt (val1) - parseInt(num);
+                    $("#resultado").val(tmp);
+                    num = tmp;
+                }
+                if(oper == 3){
+                    tmp = parseInt (val1) * parseInt(num);
+                    $("#resultado").val(tmp);
+                    num = tmp;
+                }
+                if(oper == 4){
+                    tmp = parseInt (val1) / parseInt(num);
+                    $("#resultado").val(tmp);
+                    num = tmp;
+                }
+                if(oper == 5){
+                    tmp = val1;
+                    while (num > 1){
+                        tmp = parseInt (tmp) * parseInt (val1);
+                        num = parseInt (num) - 1;
+                    }
+                    $("#resultado").val(tmp);
+                    num = tmp;
+                }
+                oper = 0;
+            }
+
+            function mas(){
+                val1 = num;
+                oper = 1;
+                jborrar();
+            }
+
+            function menos(){
+                val1 = num;
+                oper = 2;
+                jborrar();
+            }
+
+            function multi(){
+                val1 = num;
+                oper = 3;
+                jborrar();
+            }
+
+            function div(){
+                val1 = num;
+                oper = 4;
+                jborrar();
+            }
+
+            function pot(){
+                val1 = num;
+                oper = 5;
+                jborrar();
+            }
+
+            function rai(){
+                //val1 = num;
+                //oper = 6;
+                //tmp = raizC;
+                //while(tmp <= num){
+                //    tmp = raizC * raizC;
+                //    raizC = raizC + parseInt (1);
+                //}
+                //if(tmp==num){
+                //    $("#resultado").val(raizC);
+                //    num = tmp;
+                //}
+                val1 = num;
+                oper = 7;
+                tmp = Math.sqrt(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+
+            function co(){
+                val1 = num;
+                oper = 7;
+                tmp = Math.cos(num);
+                $("#resultado").val(tmp);
+                num=tmp;
+            }
+
+            function se(){
+                val1 = num;
+                oper = 8;
+                tmp = Math.atan(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+
+            function saludar(){
+                val1 = num;
+                oper = 9;
+                tmp = "Aranza Denisse Dominguez Ramirez"
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+
+
+            function abutton(valor){
+                num = num + valor;
+                $("#resultado").val(num);
+            }
+
+            function clean (){
+                $("#resultado").val("");
+                num = "";
+            }
+
+            function haviso(){
+                val1 = num;
+                oper = 9;
+                tmp = "uwu"
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+        
+        </script>
+
+    </body>
+</html>
